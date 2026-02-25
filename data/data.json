@@ -1,0 +1,86 @@
+{
+  "usuarios": [
+    {
+      "nombre": "sergio villaseca guzman",
+      "email": "sergiovillaseca.206@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "nombre": "sergio villa",
+      "email": "nanovilla.206@gmail.com",
+      "password": "123456"
+    },
+    {
+      "nombre": "valentina villa",
+      "email": "valentinavilla@gmail.com",
+      "password": "123456"
+    },
+    {
+      "nombre": "romina u",
+      "email": "rominau@gmail.com",
+      "password": "123456"
+    },
+    {
+      "nombre": "sergio villa",
+      "email": "kanbanpro@gmail.com",
+      "password": "123456"
+    }
+  ],
+  "tableros": [
+    {
+      "nombre": "Pendientes",
+      "tarjetas": [
+        {
+          "id": 1771887916533,
+          "titulo": "pureba 2",
+          "descripcion": "agregar estilo kanban",
+          "estado": "En Progreso",
+          "fechaInicio": "2026-02-23",
+          "fechaTermino": "2026-02-23",
+          "responsable": "profe roberto",
+          "mensaje": "probando si funciona"
+        },
+        {
+          "id": 1771888960385,
+          "titulo": "Implementar autenticación",
+          "descripcion": "Crear sistema de login con validación de usuarios",
+          "estado": "pendiente",
+          "fechaInicio": "2026-02-23",
+          "fechaTermino": "2026-02-23",
+          "responsable": "Claudio Melo",
+          "mensaje": "Revisar seguridad de contraseñas"
+        },
+        {
+          "id": 1771888997698,
+          "titulo": "Diseño UI Dashboard",
+          "descripcion": "Mejorar diseño visual del tablero Kanban",
+          "estado": "proceso",
+          "fechaInicio": "2026-02-23",
+          "fechaTermino": "2026-02-23",
+          "responsable": "Ignacio Pando",
+          "mensaje": "Usar colores corporativos del proyecto"
+        },
+        {
+          "id": 1771889079331,
+          "titulo": "Integración Base de Datos",
+          "descripcion": "Conectar proyecto a data.json",
+          "estado": "completado",
+          "fechaInicio": "2026-02-23",
+          "fechaTermino": "2026-02-23",
+          "responsable": "Sergio Villaseca",
+          "mensaje": "El proyecto funciona"
+        },
+        {
+          "id": 1771889342834,
+          "titulo": "incorporar footer",
+          "descripcion": "footer simple ",
+          "estado": "completado",
+          "fechaInicio": "2026-02-23",
+          "fechaTermino": "2026-02-23",
+          "responsable": "Daniel ",
+          "mensaje": "color negro"
+        }
+      ]
+    }
+  ]
+}

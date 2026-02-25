@@ -1,0 +1,268 @@
+<h2 class="mb-4">Dashboard</h2>
+
+<!-- ================= FORMULARIO ================= -->
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <div class="card shadow border-0 rounded-4 mb-5">
+        <div class="card-body p-4">
+
+          <h5 class="card-title text-center fw-bold mb-4">
+            Grupo 5 - Agregar Tarea
+          </h5>
+
+          <form method="POST" action="/nueva-tarjeta">
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <input type="text" name="titulo" class="form-control form-control-sm" placeholder="Título" required>
+              </div>
+
+              <div class="col-md-6">
+                <input type="text" name="descripcion" class="form-control form-control-sm" placeholder="Descripción" required>
+              </div>
+
+              <div class="col-md-4">
+                <select name="estado" class="form-select form-select-sm" required>
+                  <option value="">Estado</option>
+                  <option value="pendiente">Pendiente</option>
+                  <option value="proceso">En Proceso</option>
+                  <option value="completado">Completado</option>
+                </select>
+              </div>
+
+              <div class="col-md-4">
+                <input type="date" name="fechaInicio" class="form-control form-control-sm" required>
+              </div>
+
+              <div class="col-md-4">
+                <input type="date" name="fechaTermino" class="form-control form-control-sm" required>
+              </div>
+
+              <div class="col-md-6">
+                <input type="text" name="responsable" class="form-control form-control-sm" placeholder="Responsable" required>
+              </div>
+
+              <div class="col-md-6">
+                <input type="text" name="mensaje" class="form-control form-control-sm" placeholder="Mensaje o comentario">
+              </div>
+            </div>
+
+            <div class="d-grid mt-4">
+              <button class="btn btn-primary btn-sm rounded-3 fw-semibold">
+                Agregar Tarea
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--  KANBAN  -->
+
+<div class="row">
+
+  <!-- PENDIENTE -->
+
+  <div class="col-md-4">
+    <div class="card shadow-sm">
+      <div class="card-header bg-danger text-white text-center">
+        Pendiente
+      </div>
+      <div class="card-body drop-zone" data-estado="pendiente">
+
+        {{#each tarjetas}}
+        {{#if (eq estado "pendiente")}}
+
+        <div class="card mb-3 shadow-sm border-0 tarea"
+             draggable="true"
+             data-id="{{id}}"
+             data-estado="{{estado}}">
+
+          <div class="card-body d-flex flex-column">
+            <h6 class="fw-bold">{{titulo}}</h6>
+            <p class="small text-muted">{{descripcion}}</p>
+            <small><strong>Resp:</strong> {{responsable}}</small>
+
+            <div class="mt-auto">
+              <form method="POST" action="/eliminar-tarjeta/{{id}}">
+                <button class="btn btn-sm btn-outline-danger w-100 mt-2">
+                  Eliminar
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+        {{/if}}
+        {{/each}}
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- PROCESO -->
+  
+  <div class="col-md-4">
+    <div class="card shadow-sm">
+      <div class="card-header bg-warning text-dark text-center">
+        En Proceso
+      </div>
+      <div class="card-body drop-zone" data-estado="proceso">
+
+        {{#each tarjetas}}
+        {{#if (eq estado "proceso")}}
+
+        <div class="card mb-3 shadow-sm border-0 tarea"
+             draggable="true"
+             data-id="{{id}}"
+             data-estado="{{estado}}">
+
+          <div class="card-body d-flex flex-column">
+            <h6 class="fw-bold">{{titulo}}</h6>
+            <p class="small text-muted">{{descripcion}}</p>
+            <small><strong>Resp:</strong> {{responsable}}</small>
+
+            <div class="mt-auto">
+              <form method="POST" action="/eliminar-tarjeta/{{id}}">
+                <button class="btn btn-sm btn-outline-danger w-100 mt-2">
+                  Eliminar
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+        {{/if}}
+        {{/each}}
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- COMPLETADO -->
+
+  <div class="col-md-4">
+    <div class="card shadow-sm">
+      <div class="card-header bg-success text-white text-center">
+        Completado
+      </div>
+      <div class="card-body drop-zone" data-estado="completado">
+
+        {{#each tarjetas}}
+        {{#if (eq estado "completado")}}
+
+        <div class="card mb-3 shadow-sm border-0 tarea"
+             draggable="true"
+             data-id="{{id}}"
+             data-estado="{{estado}}">
+
+          <div class="card-body d-flex flex-column">
+            <h6 class="fw-bold">{{titulo}}</h6>
+            <p class="small text-muted">{{descripcion}}</p>
+            <small><strong>Resp:</strong> {{responsable}}</small>
+
+            <div class="mt-auto">
+              <form method="POST" action="/eliminar-tarjeta/{{id}}">
+                <button class="btn btn-sm btn-outline-danger w-100 mt-2">
+                  Eliminar
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+        {{/if}}
+        {{/each}}
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================= SCRIPT DRAG & DROP ================= -->
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const tareas = document.querySelectorAll(".tarea");
+  const dropZones = document.querySelectorAll(".drop-zone");
+
+  let tareaArrastrada = null;
+
+  tareas.forEach(tarea => {
+
+    tarea.addEventListener("dragstart", () => {
+      tareaArrastrada = tarea;
+      tarea.classList.add("opacity-50");
+    });
+
+    tarea.addEventListener("dragend", () => {
+      tarea.classList.remove("opacity-50");
+      tareaArrastrada = null;
+    });
+
+  });
+
+  dropZones.forEach(zone => {
+
+    zone.addEventListener("dragover", e => {
+      e.preventDefault();
+      zone.classList.add("bg-light");
+    });
+
+    zone.addEventListener("dragleave", () => {
+      zone.classList.remove("bg-light");
+    });
+
+    zone.addEventListener("drop", e => {
+      e.preventDefault();
+      zone.classList.remove("bg-light");
+
+      if (tareaArrastrada) {
+        zone.appendChild(tareaArrastrada);
+
+        const nuevoEstado = zone.dataset.estado;
+        const id = tareaArrastrada.dataset.id;
+
+        tareaArrastrada.dataset.estado = nuevoEstado;
+
+        // 🔥 Guardar en backend
+        
+        fetch("/actualizar-estado", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            id: id,
+            estado: nuevoEstado
+          })
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log("Estado actualizado");
+        })
+        .catch(err => {
+          console.error("Error:", err);
+        });
+      }
+    });
+
+  });
+
+});
+</script>

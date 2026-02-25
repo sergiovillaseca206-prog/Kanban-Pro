@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-body p-4">
+
+                <h3 class="text-center mb-4 fw-bold">Crear Cuenta</h3>
+
+                <form method="POST" action="/register">
+
+                    <div class="mb-3">
+                        <label class="form-label">Nombre completo</label>
+                        <input 
+                            type="text" 
+                            name="nombre" 
+                            class="form-control rounded-3" 
+                            placeholder="Ej: Sergio Villaseca"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Correo electrónico</label>
+                        <input 
+                            type="email" 
+                            name="email" 
+                            class="form-control rounded-3" 
+                            placeholder="ejemplo@email.com"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña</label>
+                        <input 
+                            type="password" 
+                            name="password" 
+                            class="form-control rounded-3"
+                            minlength="6"
+                            required>
+                        <small class="text-muted">Mínimo 6 caracteres</small>
+                    </div>
+
+                    <div class="d-grid mt-4">
+                        <button class="btn btn-dark rounded-3">
+                            Crear cuenta
+                        </button>
+                    </div>
+
+                </form>
+
+                <hr class="my-4">
+
+                <p class="text-center mb-0">
+                    ¿Ya tienes cuenta?
+                    <a href="/login" class="fw-semibold">Inicia sesión</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-body p-4">
+
+                <h3 class="text-center mb-4 fw-bold">Iniciar Sesión</h3>
+
+                <form method="POST" action="/login">
+
+                    <div class="mb-3">
+                        <label class="form-label">Correo electrónico</label>
+                        <input 
+                            type="email" 
+                            name="email" 
+                            class="form-control rounded-3" 
+                            placeholder="ejemplo@email.com"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña</label>
+                        <input 
+                            type="password" 
+                            name="password" 
+                            class="form-control rounded-3"
+                            required>
+                    </div>
+
+                    <div class="d-grid mt-4">
+                        <button class="btn btn-dark rounded-3">
+                            Ingresar
+                        </button>
+                    </div>
+
+                </form>
+
+                <hr class="my-4">
+
+                <p class="text-center mb-0">
+                    ¿No tienes cuenta?
+                    <a href="/register" class="fw-semibold">Crear cuenta</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>

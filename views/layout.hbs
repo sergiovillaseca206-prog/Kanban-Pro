@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>EF- M6 Proyecto integrador</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/">Proyecto: "KanbanPro"</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+
+          {{#if usuario}}
+          <li class="nav-item">
+            <span class="nav-link">Hola, {{usuario.nombre}}</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Salir</a>
+          </li>
+          {{else}}
+          <li class="nav-item">
+            <a class="nav-link" href="/">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Registro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          {{/if}}
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="flex-fill">
+    <div class="container mt-4">
+      {{{body}}}
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white py-2 mt-auto">
+    <div class="container text-center">
+
+      <h6 class="fw-bold mb-2">Sistema de Gestión de Tareas (SGT) by Sergio Villaseca</h6>
+      <small class="text-secondary">
+        © 2026 - Todos los derechos reservados
+      </small>
+
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
